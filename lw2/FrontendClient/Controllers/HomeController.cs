@@ -34,7 +34,11 @@ namespace FrontendClient.Controllers
 	    {
 	        return View("Error", new ErrorViewModel());
 	    }
-            using var channel = GrpcChannel.ForAddress("http://localhost:5000");
+
+            string backendProtocol = Environment.GetEnvironmentVariable("BACKEND_PROTOCOL");
+            string backendHost = Environment.GetEnvironmentVariable("BACKEND_HOST");
+            string backendPort = Environment.GetEnvironmentVariable("BACKEND_PORT");
+            using var channel = GrpcChannel.ForAddress(string.Format("{0}://{1}:{2}", backendProtocol, backendHost, backendPort));
             var client = new Job.JobClient(channel);
             var response = await client.RegisterAsync(new RegisterRequest { Description = description });            
             return View("Task", new TaskViewModel { Id = response.Id });

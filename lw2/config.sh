@@ -1,3 +1,4 @@
-export BACKEND_API_PORT=5000
-export FRONTEND_PORT=80
+export BACKEND_PROTOCOL=http
 export BACKEND_HOST=backendapi
+export BACKEND_PORT=5000
+export FRONTEND_PORT=80

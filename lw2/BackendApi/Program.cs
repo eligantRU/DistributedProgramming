@@ -24,8 +24,9 @@ namespace BackendApi
                 {
                     webBuilder.ConfigureKestrel(options =>
                     {
+                        int port = Int32.Parse(Environment.GetEnvironmentVariable("BACKEND_PORT"));
                         // Setup a HTTP/2 endpoint without TLS.
-                        options.ListenLocalhost(5000, o => o.Protocols =
+                        options.ListenAnyIP(port, o => o.Protocols =
                                     HttpProtocols.Http2);
                     });
 
