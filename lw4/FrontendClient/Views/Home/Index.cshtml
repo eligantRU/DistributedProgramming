@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <form method="POST">
+        <label for="Description"><input type="text" placeholder="Description" name="Description"/></label>
+        <lavel for="Data"><input type="text" name="Data" placeholder="Text to rank"/></label>
+        <button type="submit" asp-action="FormSubmit">Process it!</button>
+    </form>
+</div>
